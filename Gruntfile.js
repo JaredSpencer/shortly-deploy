@@ -37,9 +37,7 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      target: [
-        // Add list of files to lint here
-      ]
+      target: [ 'lib/**/*.js', 'app/**/**/*.js', 'public/**/**/*.js', 'server-config.js', 'server.js' ]
     },
 
     cssmin: {
@@ -103,7 +101,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [ 'cssmin', 'concat', 'uglify' ]);
+  grunt.registerTask('deploy', [ 'eslint', 'mochaTest', 'cssmin', 'concat', 'uglify' ]);
 
 
 };
