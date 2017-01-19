@@ -7,8 +7,9 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: ['./app', './db', './lib', './public', './views'],
-        dest: 'dist/built.js',
+        // src: ['app/**/*.js', 'lib/**/*.js', 'public/client/**/*.js', 'public/lib/**/*.js'],
+        src: ['lib/**/*.js', 'app/**/**/*.js', 'public/**/**/*.js', 'server-config.js', 'server.js'],
+        dest: 'public/dist/built.js',
       },
     },
 
@@ -28,6 +29,11 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      target: {
+        files: {
+          'public/dist/output.js': ['public/dist/built.js']
+        }
+      }
     },
 
     eslint: {
@@ -37,6 +43,9 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      target: {
+        files: { 'public/dist/output.css': ['public/style.css'] }
+      } 
     },
 
     watch: {
@@ -94,7 +103,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [ 'concat' ]);
+  grunt.registerTask('deploy', [ 'cssmin', 'concat', 'uglify' ]);
 
 
 };
