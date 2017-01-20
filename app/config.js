@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://root@138.197.212.189:4568/root/shortlydb/');
+//mongoose.connect('mongodb://root@138.197.212.189:4568/root/shortlydb/');
 var mongoURI = 'mongodb://localhost/shortlydb';
 mongoose.connect(mongoURI);
 
